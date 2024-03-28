@@ -1,5 +1,5 @@
 # Based on https://raw.githubusercontent.com/gasinvein/proton-flatpak/7962b87cf0d079998ea861e1a358fa93d63af7e5/.github/workflows/flatpak.yml
-name: Flatpak
+name: Nightly Build
 
 on:
   push:
@@ -273,7 +273,7 @@ jobs:
     needs: build
 
     steps:
-    - uses: dlang-community/setup-dlang@4c99aa991ce7d19dd3064de0a4f2f6b2f152e2d7
+    - uses: dlang-community/setup-dlang@v1
       with:
         compiler: ldc-latest
         
@@ -391,7 +391,7 @@ jobs:
         name: inochi-session-source
         path: '.'
       
-    - uses: LunaTheFoxgirl/setup-dlang@v1
+    - uses: dlang-community/setup-dlang@v1
       with:
         compiler: ldc-latest
   
