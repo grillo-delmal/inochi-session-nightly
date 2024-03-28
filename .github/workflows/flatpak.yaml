@@ -284,6 +284,13 @@ jobs:
         name: inochi-session-source
         path: '.'
       
+    - name: 'Get dependencies'
+      run: |
+        rm .dub/packages/local-packages.json
+        mv .dub/packages/local-packages.win.json .dub/packages/local-packages.json
+
+        dub add-path .flatpak-dub
+
     - name: 'Build Inochi Session'
       run: |
         function Invoke-VSDevEnvironment {
@@ -297,12 +304,6 @@ jobs:
               }
           }
           Invoke-VSDevEnvironment
-
-          rm .dub/packages/local-packages.json
-          mv .dub/packages/local-packages.win.json .dub/packages/local-packages.json
-
-          # Set dependencies
-          dub add-path .flatpak-dub
 
           # Build metadata (like version information and icons)
           dub build --skip-registry=all --config=meta
